@@ -6,4 +6,5 @@
     <string name="resume">Resume</string>
     <string name="time_clock">25:00</string>
     <string name="reset_time_clock">5:00</string>
+    <string name="save">Save</string>
 </resources>

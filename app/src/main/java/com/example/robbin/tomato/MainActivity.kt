@@ -1,5 +1,6 @@
 package com.example.robbin.tomato
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -58,6 +59,11 @@ class MainActivity : AppCompatActivity() {
                 button2State = 1
                 button2.text = resumeText
                 pauseTimer()
+
+                // 弹出备注窗口
+                val markIntent = Intent(this, mark::class.java)
+
+                startActivity(markIntent)
             } else if (button2State == 1) {
                 button2State = 0
                 button2.text = pauseText
@@ -108,6 +114,17 @@ class MainActivity : AppCompatActivity() {
                                 })
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (!stopped.get() || resumed.get()) {
+            Toast.makeText(this, "持续计时", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
     private fun init() {
